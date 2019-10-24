@@ -24,10 +24,15 @@ router.route('/login')
 
 router.route('/getOS')
         .get(CtrlUtilidades.getDatosSO);
-		
+
+router.route('/pruebaPS')
+        .get(CtrlUtilidades.pruebaPS);
+				
+
+/*		
 router.route('/name')
         .get(CtrlUtilidades.callName(){
 		});
-
+*/
 
 module.exports = router;

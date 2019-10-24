@@ -6,9 +6,38 @@ exports.getDateServer = function(req,res){
 exports.getDatosSO = function(req,res){
   getDatosSO();
 };
+
+/*
 exports.callName = function(req,res){
   callName();
 };
+*/
+
+exports.pruebaPS = function(req,res){
+
+var pgp = require("pg-promise")(/*options*/);
+var db = pgp("postgres://yesidmt:*yesidmt91@31.220.48.174:5432/abcdDB");
+
+
+var resp = '';
+
+db.any("select * from sublevels;", 123)
+    .then(function (data) {
+      resp=data;
+      res.json(data);
+
+       
+    })
+    .catch(function (error) {
+        console.log("ERROR:", error);
+    });
+
+
+};
+
+
+
+
 
 exports.postLogin = function (req,res){
   // console.log(req.body);
@@ -19,6 +48,32 @@ exports.postLogin = function (req,res){
 	});
    res.status(200).jsonp(vars);   
 };
+
+
+
+function pruebaPS (){
+var pgp = require("pg-promise")(/*options*/);
+var db = pgp("postgres://yesidmt:*yesidmt91@31.220.48.174:5432/abcdDB");
+
+
+var resp = '';
+
+db.any("select * from sublevels;", 123)
+    .then(function (data) {
+      resp=data;
+        console.log("DATA:", data);
+    })
+    .catch(function (error) {
+        console.log("ERROR:", error);
+    });
+
+    return resp;
+}
+
+
+
+
+
 
 let {PythonShell} = require('python-shell')
 //Metodos
